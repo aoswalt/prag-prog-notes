@@ -8,7 +8,7 @@ To save time with new clients, we started jotting down notes. And those notes be
 
 ### How the Book Is Organized
 
-This book is written as a collection of short topics. Each topic is self-contained, and addresses a particular theme. You'll find numerous cross references, which help put each topic in context. Feel free to read the topics in any order—this isn't a book you need to read front-to-back
+This book is written as a collection of short topics. Each topic is self-contained, and addresses a particular theme. You'll find numerous cross references, which help put each topic in context. Feel free to read the topics in any order - this isn't a book you need to read front-to-back
 
 ### What's in a Name?
 
@@ -34,7 +34,7 @@ it's an ongoing critical appraisal of every decision you make, every day, and on
 
 Never run on auto-pilot. Constantly be thinking, critiquing your work in real time
 
-This is going to take up some of your valuable time—time that is probably already under tremendous pressure
+This is going to take up some of your valuable time - time that is probably already under tremendous pressure
 
 Over the long term, your time investment will be repaid as you and your team become more efficient, write code that's easier to maintain, and spend less time in meetings
 
@@ -62,11 +62,11 @@ Pragmatic programming stems from a philosophy of pragmatic thinking. This chapte
 
 ### Topic 2: The Cat Ate My Source Code
 
-We can be proud of our abilities, but we must own up to our shortcomings—our ignorance and our mistakes
+We can be proud of our abilities, but we must own up to our shortcomings - our ignorance and our mistakes
 
 #### Team Trust
 
-Above all, your team needs to be able to trust and rely on you—and you need to be comfortable relying on each of them as well
+Above all, your team needs to be able to trust and rely on you - and you need to be comfortable relying on each of them as well
 
 #### Take Responsibility
 
@@ -78,7 +78,7 @@ Instead of excuses, provide options. Don't say it can't be done; explain what ca
 
 #### Challenges
 
-When you find yourself saying, "I don't know," be sure to follow it up with "—but I'll find out." (including a reasonable guess is good)
+When you find yourself saying, "I don't know," be sure to follow it up with " - but I'll find out." (including a reasonable guess is good)
 
 ### Topic 3: Software Entropy
 
@@ -90,7 +90,7 @@ Whatever the name, though, both debt and rot can spread uncontrollably
 
 The most important one seems to be the psychology, or culture, at work on a project
 
-One broken window, left unrepaired for any substantial length of time, instills in the inhabitants of the building a sense of abandonment—a sense that the powers that be don't care about the building
+One broken window, left unrepaired for any substantial length of time, instills in the inhabitants of the building a sense of abandonment - a sense that the powers that be don't care about the building
 
 hopelessness can be contagious
 
@@ -110,7 +110,7 @@ roll out a mat between the front door and the source of the fire. They didn't wa
 
 don't cause collateral damage just because there's a crisis of some sort. One broken window is one too many
 
-where the code is pristinely beautiful—cleanly written, well designed, and elegant—you will likely take extra special care not to mess it up
+where the code is pristinely beautiful - cleanly written, well designed, and elegant - you will likely take extra special care not to mess it up
 
 Just tell yourself, "No broken windows."
 
@@ -134,7 +134,7 @@ Can you determine whether you're making stone soup or frog soup when you try to 
 
 the real world just won't let us produce much that's truly perfect, particularly not bug-free software. Time, technology, and temperament all conspire against us
 
-you can discipline yourself to write software that's good enough—good enough for your users, for future maintainers, for your own peace of mind
+you can discipline yourself to write software that's good enough - good enough for your users, for future maintainers, for your own peace of mind
 
 The phrase "good enough'' does not imply sloppy or poorly produced code
 
@@ -275,7 +275,7 @@ Treat English (or whatever your native tongue may be) as just another programmin
 
 #### Know Your Audience
 
-You're communicating only if you're conveying what you mean to convey—just talking isn't enough
+You're communicating only if you're conveying what you mean to convey - just talking isn't enough
 
 You can present this update in many different ways, depending on your audience
 
@@ -326,3 +326,280 @@ documentation as an integral part of the overall development process
 restrict your non-API commenting to discussing why something is done, its purpose and its goal
 
 document those elusive bits of a project that can't be documented anywhere else: engineering trade-offs, why decisions were made, what other alternatives were discarded, and so on
+
+## Chapter 2: A Pragmatic Approach
+
+certain tips and tricks that apply at all levels of software development, processes that are virtually universal, and ideas that are almost axiomatic
+
+### Topic 8: The Essence of Good Design
+
+Good Design Is Easier to Change Than Bad Design
+
+A thing is well designed if it adapts to the people who use it. For code, that means it must adapt by changing
+
+ETC principle: Easier to Change
+
+#### ETC Is a Value, Not a Rule
+
+Deliberately ask yourself "did the thing I just did make the overall system easier or harder to change?"
+
+Much of the time, common sense will be correct, and you can make an educated guess
+
+You can always fall back on the ultimate "easy to change" path: try to make what you write replaceable
+
+It's what you should be doing all the time, anyway. It's really just thinking about keeping code decoupled and cohesive
+
+Note the situation in your engineering day book: the choices you have, and some guesses about change. Leave a tag in the source. Then, later, when this code has to change, you'll be able to look back and give yourself feedback
+
+### Topic 9: DRY - The Evils of Duplication
+
+maintenance is not a discrete activity, but a routine part of the entire development process
+
+the DRY principle: Every piece of knowledge must have a single, unambiguous, authoritative representation within a system
+
+It isn't a question of whether you'll remember: it's a question of when you'll forget
+
+#### DRY Is More Than Code
+
+"don't copy-and-paste lines of source." That is part of DRY, but it's a tiny and fairly trivial part
+
+DRY is about the duplication of knowledge, of intent. It's about expressing the same thing in two different places, possibly in two totally different ways
+
+##### Not All Code Duplication Is Knowledge Duplication
+
+The code is the same, but the knowledge they represent is different. The two functions validate two separate things that just happen to have the same rules. That's a coincidence, not a duplication
+
+##### Duplication In Documentation
+
+The intent of this function is given twice: once in the comment and again in the code
+
+Ask yourself what the comment adds to the code. From our point of view, it simply compensates for some bad naming and layout
+
+##### DRY Violations in Data
+
+whenever a module exposes a data structure, you're coupling all the code that uses that structure to the implementation of that module
+
+#### Representational Duplication
+
+some kind of DRY violation: your code has to have knowledge that is also present in the external thing
+
+##### Duplication Across Internal APIs
+
+For internal APIs, look for tools that let you specify the API in some kind of neutral format
+
+##### Duplication Across External APIs
+
+public APIs are documented formally using something like OpenAPI
+
+##### Duplication with Data Sources
+
+There's another option, and one we often prefer. Rather than writing code that represents external data in a fixed structure (an instance of a struct or class, for example), just stick it into a key/value data structure (your language might call it a map, hash, dictionary, or even object). On its own this is risky: you lose a lot of the security of knowing just what data you're working with. So we recommend adding a second layer to this solution: a simple table-driven validation suite that verifies that the map you've created contains at least the data you need, in the format you need it. Your API documentation tool might be able to generate this
+
+What you're trying to do is foster an environment where it's easier to find and reuse existing stuff than to write it yourself
+
+#### Interdeveloper Duplication
+
+If it isn't easy, people won't do it
+
+### Topic 10: Orthogonality
+
+#### What Is Orthogonality?
+
+Two or more things are orthogonal if changes in one do not affect any of the others
+
+#### Benefits of Orthogonality
+
+When components of any system are highly interdependent, there is no such thing as a local fix
+
+We want to design components that are self-contained: independent, and with a single, well-defined purpose
+
+As long as you don't change that component's external interfaces, you can be confident that you won't cause problems that ripple through the entire system
+
+You get two major benefits if you write orthogonal systems: increased productivity and reduced risk
+
+##### Gain Productivity
+
+there is no need to keep changing existing code as you add new code
+
+If components have specific, well-defined responsibilities, they can be combined with new components in ways that were not envisioned by their original implementors. The more loosely coupled your systems, the easier they are to reconfigure and reengineer
+
+You get more functionality per unit effort by combining orthogonal components
+
+##### Reduce Risk
+
+If a module is sick, it is less likely to spread the symptoms around the rest of the system
+
+Make small changes and fixes to a particular area, and any problems you generate will be restricted to that area
+
+easier to design and run tests on its components
+
+interfaces to these third-party components will be isolated to smaller parts of the overall development
+
+#### Design
+
+Systems should be composed of a set of cooperating modules, each of which implements functionality independent of the others
+
+If I dramatically change the requirements behind a particular function, how many modules are affected? In an orthogonal system, the answer should be "one.''
+
+Don't rely on the properties of things you can't control.
+
+#### Toolkits and Libraries
+
+When you bring in a toolkit (or even a library from other members of your team), ask yourself whether it imposes changes on your code that shouldn't be there
+
+#### Coding
+
+Unless you constantly monitor not just what you are doing but also the larger context of the application, you might unintentionally duplicate functionality in some other module, or express existing knowledge twice
+
+* Keep your code decoupled
+
+  modules that don't reveal anything unnecessary to other modules and that don't rely on other modules' implementations
+
+* Avoid global data
+
+  In general, your code is easier to understand and maintain if you explicitly pass any required context into your modules
+
+  Be careful with singletons - they can also lead to unnecessary linkage
+
+* Avoid similar functions
+
+  Duplicate code is a symptom of structural problems
+
+Get into the habit of being constantly critical of your code
+
+#### Testing
+
+An orthogonally designed and implemented system is easier to test. Because the interactions between the system's components are formalized and limited, more of the system testing can be performed at the individual module level
+
+Writing unit tests is itself an interesting test of orthogonality
+
+Bug fixing is also a good time to assess the orthogonality of the system as a whole. When you come across a problem, assess how localized the fix is
+
+tag bug fixes when you check the code back in after testing. You can then run monthly reports analyzing trends in the number of source files affected by each bug fix
+
+#### Documentation
+
+orthogonality also applies to documentation. The axes are content and presentation
+
+a markup system such as Markdown: when writing we focus only on the content, and leave the presentation to whichever tool we use to render it
+
+#### Living with Orthogonality
+
+With DRY, you're looking to minimize duplication within a system, whereas with orthogonality you reduce the interdependency among the system's components
+
+### Topic 11: Reversibility
+
+if you rely heavily on some fact, you can almost guarantee that it will change
+
+There is always more than one way to implement something, and there is usually more than one vendor available to provide a third-party product
+
+With every critical decision, the project team commits to a smaller target - a narrower version of reality that has fewer options
+
+The problem is that critical decisions aren't easily reversible
+
+#### Reversibility
+
+we don't always make the best decisions the first time around
+
+The mistake lies in assuming that any decision is cast in stone - and in not preparing for the contingencies that might arise
+
+Instead of carving decisions in stone, think of them more as being written in the sand at the beach. A big wave can come along and wipe them out at any time
+
+#### Flexible Architecture
+
+you also need to think about maintaining flexibility in the areas of architecture, deployment, and vendor integration
+
+### Topic 12: Tracer Bullets
+
+We use the term tracer bullet development to visually illustrate the need for immediate feedback under actual conditions with a moving goal
+
+#### Code That Glows in the Dark
+
+Look for the important requirements, the ones that define the system. Look for the areas where you have doubts, and where you see the biggest risks. Then prioritize your development so that these are the first areas you code
+
+Tracer code is not disposable: you write it for keeps. It contains all the error checking, structuring, documentation, and self-checking that any piece of production code has
+
+Tracer development is consistent with the idea that a project is never finished: there will always be changes required and functions to add
+
+* Users get to see something working early
+
+  They also get to contribute as the project progresses
+
+* Developers build a structure to work in
+
+  worked out all the end-to-end interactions
+
+* You have an integration platform
+
+  you have an environment to which you can add new pieces of code once they have been unit-tested
+
+The impact of each new change is more apparent, and the interactions are more limited
+
+* You have something to demonstrate
+
+  you'll always have something to show them
+
+* You have a better feel for progress
+
+  developers tackle use cases one by one
+
+Because each individual development is smaller, you avoid creating those monolithic blocks of code that are reported as 95% complete week after week
+
+#### Tracer Bullets Don't Always Hit Their Target
+
+a small body of code has low inertia - it is easy and quick to change. You'll be able to gather feedback on your application and generate a new, more accurate version quickly and cheaply
+
+#### Tracer Code versus Prototyping
+
+There is a difference
+
+With a true prototype, you will throw away whatever you lashed together when trying out the concept, and recode it properly using the lessons you've learned
+
+You could prototype a user interface for your end users in a UI tool
+
+you might want to prototype a number of algorithms that perform the actual packing
+
+once you'd made your decision, you'd start again and code the algorithms in their final environment, interfacing to the real world. This is prototyping, and it is very useful
+
+Once you have all the components in the application plumbed together, you have a framework to show your users and your developers. Over time, you add to this framework with new functionality, completing stubbed routines. But the framework stays intact, and you know the system will continue to behave the way it did when your first tracer code was completed
+
+Prototyping generates disposable code. Tracer code is lean but complete, and forms part of the skeleton of the final system
+
+### Topic 13: Prototypes and Post-it Notes
+
+Like the car makers, we can target a prototype to test one or more specific aspects of a project
+
+prototypes as code-based, but they don't always have to be
+
+Post-it notes are great for prototyping dynamic things such as workflow and application logic. A user interface can be prototyped as a drawing on a whiteboard, as a nonfunctional mock-up drawn with a paint program, or with an interface builder
+
+Prototypes are designed to answer just a few questions
+
+you find yourself in an environment where you cannot give up the details, then you need to ask yourself if you are really building a prototype at all
+
+#### Things to Prototype
+
+What sorts of things might you choose to investigate with a prototype? Anything that carries risk
+
+Prototyping is a learning experience. Its value lies not in the code produced, but in the lessons learned
+
+#### How to Use Prototypes
+
+* Correctness
+* Completeness
+* Robustness
+* Style
+
+Prototypes gloss over details, and focus in on specific aspects of the system being considered, so you may want to implement them using a high-level scripting language
+
+#### Prototyping Architecture
+
+As opposed to tracer bullets, none of the individual modules in the prototype system need to be particularly functional
+
+you may not even need to code in order to prototype architecture - you can prototype on a whiteboard, with Post-it notes or index cards
+
+some specific areas you may want to look for in the architectural prototype: Are the responsibilities of the major areas well defined and appropriate? Are the collaborations between major components well defined? Is coupling minimized? Can you identify potential sources of duplication? Are interface definitions and constraints acceptable? Does every module have an access path to the data it needs during execution? Does it have that access when it needs it?
+
+#### How _Not_ to Use Prototypes
+
+make sure that everyone understands that you are writing disposable code
