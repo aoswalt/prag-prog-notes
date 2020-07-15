@@ -603,3 +603,195 @@ some specific areas you may want to look for in the architectural prototype: Are
 #### How _Not_ to Use Prototypes
 
 make sure that everyone understands that you are writing disposable code
+
+### Topic 14: Domain Languages
+
+macros - all of which may suggest or obscure certain solutions
+
+the language of the problem domain may also suggest a programming solution
+
+try to write code using the vocabulary of the application domain
+
+Your business users will have a vague idea of what they want to achieve, but they neither know nor care about the details
+
+#### Characteristics of Domain Languages
+
+RSpec and the router code are embedded into the code you run: they are true extensions to your code's vocabulary. Cucumber and Ansible are read by code and converted into some form the code can use. We call RSpec and the router examples of internal domain languages, while Cucumber and Ansible use external languages
+
+##### Trade-Offs Between Internal and External  Languages
+
+an internal domain language can take advantage of the features of its host language
+
+internal domain languages is that you're bound by the syntax and semantics of that language
+
+External languages have no such restrictions. As long as you can write a parser for the language
+
+writing a good parser is not a trivial job
+
+don't spend more effort than you save
+
+##### An Internal Domain Language on the Cheap
+
+Don't do a bunch of metaprogramming. Instead, just write functions to do the work
+
+### Topic 15: Estimating
+
+in the process of producing an estimate, you'll come to understand more about the world your programs inhabit
+
+#### How Accurate Is Accurate Enough?
+
+Do they need high accuracy, or are they looking for a ballpark figure?
+
+the units you use make a difference in the interpretation of the result
+
+#### Where Do Estimates Come From?
+
+All estimates are based on models of the problem
+
+basic estimating trick that always gives good answers: ask someone who's already done it
+
+##### Understand What's Being Asked
+
+##### Build a Model of the System
+
+Often, the process of building the model leads to discoveries of underlying patterns and processes that weren't apparent on the surface
+
+##### Break the Model into Components
+
+Sometimes a component contributes a single value that is added into the result. Some components may supply multiplying factors, while others may be more complicated
+
+##### Give Each Parameter a Value
+
+The trick is to work out which parameters have the most impact on the result, and concentrate on getting them about right
+
+You should have a justifiable way of calculating these critical parameters
+
+you'll often find yourself basing an estimate on other subestimates. This is where your largest errors will creep in
+
+##### Calculate the Answers
+
+Only in the simplest of cases will an estimate have a single answer
+
+During the calculation phase, you get answers that seem strange. Don't be too quick to dismiss them. If your arithmetic is correct, your understanding of the problem or your model is probably wrong
+
+##### Keep Track of Your Estimating Prowess
+
+it's a great idea to record your estimates so you can see how close you were
+
+take some time to uncover what happened
+
+#### Estimating Project Schedules
+
+Program Evaluation Review Technique, or PERT
+
+Every PERT task has an optimistic, a most likely, and a pessimistic estimate
+
+Using a range of values like this is a great way to avoid one of the most common causes of estimation error: padding a number because you're unsure
+
+the only way to determine the timetable for a project is by gaining experience on that same project
+
+Iterate the Schedule with the Code
+
+the team, their productivity, and the environment will determine the schedule. By formalizing this, and refining the schedule as part of each iteration, you'll be giving them the most accurate scheduling estimates you can
+
+#### What to Say When Asked for an Estimate
+
+You say "I'll get back to you."
+
+You almost always get better results if you slow the process down and spend some time going through the steps
+
+## Chapter 3: The Basic Tools
+
+Tools amplify your talent
+
+Always be on the lookout for better ways of doing things
+
+### Topic 16: The Power of Plain Text
+
+our base material isn't wood or iron, it's knowledge
+
+the best format for storing knowledge persistently is plain text
+
+The problem with most binary formats is that the context necessary to understand the data is separate from the data itself
+
+#### What Is Plain Text?
+
+Plain text is made up of printable characters in a form that conveys information
+
+publisher, who wanted us to use a word processor (part of why prag prog publishing came to be)
+
+The information part is important
+
+**Keep Knowledge in Plain Text**
+
+#### The Power of Text
+
+Plain text doesn't mean that the text is unstructured
+
+Insurance Against Obsolescence
+
+##### Insurance Against Obsolescence
+
+Human-readable forms of data, and self-describing data, will outlive all other forms of data and the applications that created them
+
+You may not have recognized the significance of the numbers quite as easily. This is the difference between human readable and human understandable
+
+##### Leverage
+
+Unix is famous for being designed around the philosophy of small, sharp tools, each intended to do one thing well
+
+a common underlying format - the line-oriented, plain-text file
+
+Plain text is also easier to search
+
+File comparison tools such as diff and fc allow you to see at a glance what changes have been made, while sum allows you to generate a checksum to monitor the file for accidental (or malicious) modification
+
+##### Easier Testing
+
+simple matter to add, update, or modify the test data without having to create any special tools to do so
+
+plain-text output from regression tests can be trivially analyzed with shell commands or a simple script
+
+#### Lowest Common Denominator
+
+You need to ensure that all parties can communicate using a common standard. Plain text is that standard
+
+### Topic 17: Shell Games
+
+A benefit of GUIs is WYSIWYG - what you see is what you get. The disadvantage is WYSIAYG - what you see is all you get
+
+Pragmatic Programmers don't just cut code, or develop object models, or write documentation, or automate the build process - we do all of these things
+
+The scope of any one tool is usually limited to the tasks that the tool is expected to perform
+
+Gain familiarity with the shell, and you'll find your productivity soaring
+
+### Topic 18: Power Editing
+
+text is the basic raw material of programming
+
+**Achieve Editor Fluency**
+
+the major gain is that by becoming fluent, you no longer have to think about the mechanics of editing
+
+#### What Does "Fluent" Mean?
+
+When editing code, move by various syntactic units (matching delimiters, functions, modules, ...)
+
+Split the editor window into multiple panels, and navigate between them
+
+Display compilation errors in the current project
+
+#### Moving Toward Fluency
+
+Run the current project's tests
+
+learn the commands that make your life easier
+
+Every time you find yourself doing something repetitive, get into the habit of thinking "there must be a better way."
+
+#### Challenges
+
+turn off autorepeat, and instead learn the key sequences to move, select, and delete by characters, words, lines, and blocks
+
+Lose the mouse/trackpad. For one whole week, edit using just the keyboard
