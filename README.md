@@ -795,3 +795,80 @@ Every time you find yourself doing something repetitive, get into the habit of t
 turn off autorepeat, and instead learn the key sequences to move, select, and delete by characters, words, lines, and blocks
 
 Lose the mouse/trackpad. For one whole week, edit using just the keyboard
+
+---
+
+### Topic 40 Refactoring
+
+Code needs to evolve; it's not a static thing. Unfortunately, the most common metaphor for software development is building construction
+
+Software is more like gardening - it is more organic than concrete
+
+You constantly monitor the health of the garden, and make adjustments (to the soil, the plants, the layout) as needed
+
+Business people are comfortable with the metaphor of building construction
+
+We're not building skyscrapers - we aren't as constrained by the boundaries of physics and the real world
+
+Rewriting, reworking, and re-architecting code is collectively known as restructuring. But there's a subset of that activity that has become practiced as refactoring
+
+It is defined by Martin Fowler as a: disciplined technique for restructuring an existing body of code, altering its internal structure without changing its external behavior
+
+Critical parts of this definition are that: The activity is disciplined, not a free-for-all External behavior does not change; this is not the time to add features
+
+Refactoring is not intended to be a special, high-ceremony, once-in-a-while activity
+
+Refactoring is a day-to-day activity, taking low-risk small steps, more like weeding and raking
+
+In order to guarantee that the external behavior hasn't changed, you need good, automated unit testing that validates the behavior of the code
+
+#### When Should You Refactor?
+
+You refactor when you've learned something
+
+Don't hesitate to change it. There's no time like the present
+
+Qualifiers for refactoring:
+* Duplication - You've discovered a violation of the DRY principle
+* Nonorthogonal design - You've discovered something that could be made more orthogonal
+* Outdated knowledge - Things change, requirements drift, and your knowledge of the problem increases. Code needs to keep up
+* Usage - As the system gets used by real people under real circumstances, you realize some features are now more important than previously thought, and "must have" features perhaps weren't
+* Performance - You need to move functionality from one area of the system to another to improve performance
+* The Tests Pass - Yes. Seriously. We did say that refactoring should be a small scale activity, backed up by good tests. So when you've added a small amount of code, and that one extra test passes, you now have a great opportunity to dive in and tidy up what you just wrote
+
+Refactoring your code - moving functionality around and updating earlier decisions - is really an exercise in pain management
+
+Changing source code around can be pretty painful: it was working, maybe it's better to leave well enough alone
+
+#### Real-World Complications
+
+Time pressure is often used as an excuse for not refactoring. But this excuse just doesn't hold up: fail to refactor now, and there'll be a far greater time investment to fix the problem down the road - when there are more dependencies to reckon with
+
+Think of the code that needs refactoring as "a growth" - take it out now, or it will be worse later.
+
+**Refactor Early, Refactor Often**
+
+Refactoring, as with most things, is easier to do while the issues are small, as an ongoing activity while coding
+
+You shouldn't need "a week to refactor" a piece of code - that's a full-on rewrite
+
+#### How Do You Refactor?
+
+Refactoring is redesign
+
+Anything that you or others on your team designed can be redesigned
+
+If you proceed to rip up vast quantities of code with wild abandon, you may find yourself in a worse position than when you started
+
+Martin Fowler's tips on how to refactor without doing more harm than good:
+1. Don't try to refactor and add functionality at the same time
+1. Make sure you have good tests before you begin refactoring. Run the tests as often as possible. That way you will know quickly if your changes have broken anything
+1. Take short, deliberate steps: move a field from one class to another, split a method, rename a variable. Refactoring often involves making many localized changes that result in a larger-scale change. If you keep your steps small, and test after each step, you will avoid prolonged debugging
+
+Maintaining good regression tests is the key to refactoring safely
+
+If you have to go beyond refactoring and end up changing external behavior or interfaces, then it can help to deliberately break the build: old clients of this code should fail to compile
+
+Next time you see a piece of code that isn't quite as it should be, fix it
+
+Manage the pain: if it hurts now, but is going to hurt even more later
